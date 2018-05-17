@@ -1,11 +1,11 @@
 <template>
   <form class="form">
     <div class="form-group" v-bind:class="{'has-error': error}">
-      <label for="title">Write your task</label>
+      <label for="title">Title</label>
       <input type="text" class="form-control" id="title" placeholder="Title" v-model="note.title">
     </div>
     <div class="form-group" v-bind:class="{'has-error': error}">
-      <label for="description">Write your task</label>
+      <label for="description">Description</label>
       <textarea type="text" class="form-control" id="description" placeholder="Description" rows="6" v-model="note.description"></textarea>
     </div>
     <div class="form-group">
@@ -33,8 +33,8 @@ export default {
       event.preventDefault();
       if (this.note.title && this.note.description) {
         this.$emit("addElement", this.note);
-        this.note.title = "",
-        this.note.description = ""
+        this.note.title = "";
+        this.note.description = "";
         this.error = false;
       } else {
         this.error = true;
