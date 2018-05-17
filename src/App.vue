@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
-    <Header title="TodoApp"/>
-    <Form/>
+    <Header titleHeader="TodoApp"/>
+    <Form v-on:addElement="addNote"></Form>
     <List/>
   </div>
 </template>
@@ -21,14 +21,28 @@ export default {
   },
   data() {
     return {
-      title: "Todo app"
-      
+      titleHeader: "Todo app",
+      todos: [
+        {id: 0, title: "Pranie", description: "Wypierz te pranie"}
+      ],
+      id: 1
+    }
+  },
+  methods: {
+    addNote(note) {
+      this.todos.push({
+        id: this.id,
+        title: note.title,
+        description: note.description
+      });
+      this.id++;
     }
   }
 }
 </script>
 
 <style>
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
