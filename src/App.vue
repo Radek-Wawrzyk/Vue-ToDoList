@@ -1,17 +1,29 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <Header title="TodoApp"/>
+    <Form/>
+    <List/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from './components/Header.vue';
+import Form from './components/Form.vue';
+import List from './components/List.vue';
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Header,
+    Form,
+    List
+  },
+  data() {
+    return {
+      title: "Todo app"
+      
+    }
   }
 }
 </script>
