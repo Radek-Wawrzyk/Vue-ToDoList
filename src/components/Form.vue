@@ -23,7 +23,8 @@ export default {
     return {
       note: {
         title: "",
-        description: ""
+        description: "",
+        time: ""
       },
       error: false
     }

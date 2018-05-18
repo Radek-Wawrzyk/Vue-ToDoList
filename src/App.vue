@@ -4,7 +4,7 @@
     <Form v-on:addElement="addNote"></Form>
     <h2>Tasks</h2>
     <ul class="list-group">
-      <List v-for="note in notes" v-bind:note="note" v-on:removeElement="removeNote" v-bind:key="note.id"></List>
+      <single-note v-for="note in notes" v-bind:note="note" v-on:removeElement="removeNote" v-bind:key="note.id"></single-note>
     </ul>
   </div>
 </template>
@@ -13,21 +13,19 @@
 
 import Header from './components/Header.vue';
 import Form from './components/Form.vue';
-import List from './components/SingleNote.vue';
+import SingleNote from './components/SingleNote.vue';
 
 export default {
   name: "app",
   components: {
     Header,
     Form,
-    List
+    SingleNote
   },
   data() {
     return {
       titleHeader: "Todo app",
-      notes: [
-        {id: 0, title: "Pranie", description: "Wypierz te pranie"}
-      ],
+      notes: [],
       id: 1
     }
   },
@@ -36,7 +34,8 @@ export default {
       this.notes.push({
         id: this.id,
         title: note.title,
-        description: note.description
+        description: note.description,
+        time: new Date(Date.now()).toLocaleString()
       });
       this.id++;
     },
