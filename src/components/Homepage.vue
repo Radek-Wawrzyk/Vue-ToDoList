@@ -1,11 +1,12 @@
 <template>
   <header class="header">
-    <h1 class="text-center">List of your notes</h1>
+    <h1 class="text-center">Homepage</h1>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Homepage',
+  props:["titleHeader"]
 }
 </script>
