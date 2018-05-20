@@ -1,11 +1,13 @@
 <template>
-  <main class="container">
-    <Header ></Header>
-    <Form v-on:addElement="addNote"></Form>
+  <main>
+    <div class="container">
+      <Header></Header>
+      <Form v-on:addElement="addNote"></Form>
       <h2>Tasks</h2>
       <ul class="list-group">
         <single-note v-for="note in notes" v-bind:note="note" v-on:removeElement="removeNote" v-bind:key="note.id"></single-note>
       </ul>
+    </div>
   </main>
 </template>
 
