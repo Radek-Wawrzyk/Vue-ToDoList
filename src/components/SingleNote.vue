@@ -2,8 +2,8 @@
   <transition name="fade">
     <li class="list-group-item" v-bind:class="{active: done}">
       <h3>{{note.title}}</h3>
-      <p>{{note.description}}</p>
       <p class="text-muted small">{{note.time}}</p>
+      <p>{{note.description}}</p>
       <input type="checkbox" v-model="done" v-on:click="doneTask">
       <div class="btn-group">
         <button class="btn btn-danger" v-on:click="removeElement">Delete</button>
@@ -90,6 +90,10 @@ input[type=checkbox] {
   opacity: 0;
   transform: translate3d(100px,0,0);
 }
-
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child),
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child),
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-radius: 4px;
+}
 
 </style>

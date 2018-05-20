@@ -9,7 +9,7 @@
       <textarea type="text" class="form-control" id="description" placeholder="Description" rows="6" v-model="note.description"></textarea>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-success" v-on:click="addElement" >Add task</button>
+      <button type="submit" class="btn btn-form" v-on:click="addElement" >Add task</button>
     </div>
     <small v-bind:class="{'error': error}" class="form-text text-danger">Please fill all fields!</small>
   </form>
@@ -53,6 +53,21 @@ export default {
 }
 .error {
   display: block;
+}
+.btn-form {
+  background: #f44033;
+  color: white;
+  transition: 0.25s all;
+  font-size: 16px;
+}
+.btn-form:hover, .btn-form:focus {
+  border-color: #f44033;
+  background: white;
+  color: #f44033;
+  outline: none;
+}
+.has-error .form-control {
+  border-color: #f44033;
 }
 
 </style>
