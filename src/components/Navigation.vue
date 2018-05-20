@@ -20,3 +20,25 @@ export default {
 }
 
 </script>
+
+<style>
+.navbar-nav {
+  font-size: 20px;
+}
+.navbar-nav .router-link-exact-active {
+  color: #f44033 !important;
+}
+.navbar-nav>li>a {
+  transition: color 0.25s;
+}
+.navbar-nav>li>a:hover {
+  color: #f44033;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+</style>
