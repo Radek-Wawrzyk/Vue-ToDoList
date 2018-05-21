@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
         title: "Buy new Macbook Pro",
         description: "It is a joke, i don't wanna buy this shit! Only WIndows",
         time: new Date(Date.now()).toLocaleString()
-      }
+      },
     ],
     counterId: 1,
     editModal: false
@@ -27,7 +27,14 @@ export const store = new Vuex.Store({
     },
     editNote: (state) => {
       state.editModal = !state.editModal;
-    
+    },
+    removeElement: (state, id) => {
+      let array = state.notes;
+      array.forEach((note, index) => {
+        if (note.id === id) {
+          array.splice(index,1);
+        }
+      });
     }
   }
 });

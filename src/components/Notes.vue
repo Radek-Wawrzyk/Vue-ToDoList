@@ -3,8 +3,9 @@
     <div class="container">
       <Header></Header>
       <Form v-on:addElement="addNote"></Form>
+      {{this.$store.state.notes}}
       <ul class="list-group">
-        <single-note v-for="note in notes" v-bind:note="note" v-on:removeElement="removeNote" v-bind:key="note.id"></single-note>
+        <single-note v-for="note in notes" v-bind:note="note" v-bind:key="note.id"></single-note>
       </ul>
     </div>
   </main>
@@ -32,10 +33,6 @@ export default {
     addNote: function(note) {
       this.$store.commit("addNote", note);
     },
-    removeNote(id) {
-      let notes = this.notes;
-      this.notes = notes.filter((note => note.id != id));
-    }
   }
 }
 

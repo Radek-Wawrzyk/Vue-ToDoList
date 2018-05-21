@@ -2,7 +2,6 @@
   <transition name="fade">
     <li class="list-group-item" v-bind:class="{active: done}">
       <h3>{{note.title}}</h3>
-
       <p class="text-muted small">{{note.time}}</p>
       <p>{{note.description}}</p>
       <input type="checkbox" v-model="done" v-on:click="doneTask">
@@ -35,14 +34,14 @@ export default {
     }
   },
   methods: {
-    removeElement() {
-      this.$emit("removeElement", this.note.id);
-    },
     doneTask() {
       this.done = !this.done;
     },
     editElement: function() {
       this.$store.commit("editNote", this.note);
+    },
+    removeElement: function() {
+      this.$store.commit("removeElement", this.note.id);
     }
   }
 }
