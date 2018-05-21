@@ -2,6 +2,7 @@
   <transition name="fade">
     <li class="list-group-item" v-bind:class="{active: done}">
       <h3>{{note.title}}</h3>
+
       <p class="text-muted small">{{note.time}}</p>
       <p>{{note.description}}</p>
       <input type="checkbox" v-model="done" v-on:click="doneTask">
@@ -9,7 +10,7 @@
         <button class="btn btn-danger" v-on:click="removeElement">Delete</button>
         <button class="btn btn-warning" v-on:click="editElement">Edit</button>
       </div>
-      <div class="edit-form" v-bind:class="{'active': status}">
+      <div class="edit-form" v-bind:class="{'active': this.$store.state.editModal}">
         <div class="form-group">
           <label :for="'title-edit-'+note.id" >Title</label>
           <input type="text" class="form-control" id="title-edit" v-model="note.title" >
@@ -30,7 +31,6 @@ export default {
   props: ["note"],
   data() {
     return {
-      status: false,
       done: false,
     }
   },
@@ -38,11 +38,11 @@ export default {
     removeElement() {
       this.$emit("removeElement", this.note.id);
     },
-    editElement() {
-      this.status = !this.status;
-    },
     doneTask() {
       this.done = !this.done;
+    },
+    editElement: function() {
+      this.$store.commit("editNote", this.note);
     }
   }
 }

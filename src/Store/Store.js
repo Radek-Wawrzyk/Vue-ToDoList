@@ -5,6 +5,29 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    notes: []
+    notes: [
+      {
+        id: 0,
+        title: "Buy new Macbook Pro",
+        description: "It is a joke, i don't wanna buy this shit! Only WIndows",
+        time: new Date(Date.now()).toLocaleString()
+      }
+    ],
+    counterId: 1,
+    editModal: false
+  },
+  mutations: {
+    addNote: (state, note) => {
+      state.notes.push({
+        id: state.counterId++,
+        title: note.title,
+        description: note.description,
+        time: new Date(Date.now()).toLocaleString()
+      })
+    },
+    editNote: (state) => {
+      state.editModal = !state.editModal;
+    
+    }
   }
 });

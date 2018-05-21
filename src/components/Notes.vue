@@ -23,21 +23,14 @@ export default {
     Form,
     SingleNote,
   },
-  data() {
-    return {
-      notes: [],
-      id: 1
+  computed: {
+    notes() {
+      return this.$store.state.notes;
     }
   },
   methods: {
-    addNote(note) {
-      this.notes.push({
-        id: this.id,
-        title: note.title,
-        description: note.description,
-        time: new Date(Date.now()).toLocaleString()
-      });
-      this.id++;
+    addNote: function(note) {
+      this.$store.commit("addNote", note);
     },
     removeNote(id) {
       let notes = this.notes;
