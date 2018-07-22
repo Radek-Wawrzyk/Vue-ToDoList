@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
       })
     },
     editNote: (state, note) => {
-     
+
     },
     removeNote: (state, id) => {
       let array = state.notes;
@@ -40,6 +40,14 @@ export const store = new Vuex.Store({
           array.splice(index,1);
         }
       });
+    }
+  },
+  actions: {
+    addNote: (event, note) => {
+      event.commit("addNote", note);
+    },
+    removeNote: (event, id) => {
+      event.commit("removeNote", id);
     }
   }
 });

@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     addNote: function(note) {
-      this.$store.commit("addNote", note);
+      this.$store.dispatch("addNote", note);
     },
   }
 }

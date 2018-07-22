@@ -9,7 +9,7 @@
         <button class="btn btn-danger" v-on:click="removeElement">Delete</button>
         <button class="btn btn-warning" v-on:click="editElement">Edit</button>
       </div>
-      <div class="edit-form" v-bind:class="{'active': this.$store.state.editModal}">
+      <div class="edit-form" v-bind:class="{'active': editStatus}">
         <div class="form-group">
           <label :for="'title-edit-'+note.id" >Title</label>
           <input type="text" class="form-control" id="title-edit" v-model="note.title" >
@@ -31,17 +31,18 @@ export default {
   data() {
     return {
       done: false,
+      editStatus: false
     }
   },
   methods: {
     doneTask() {
       this.done = !this.done;
     },
-    editElement: function() {
+    editElement() {
       this.$store.commit("editNote", this.note);
     },
     removeElement: function() {
-      this.$store.commit("removeElement", this.note.id);
+      this.$store.dispatch("removeNote", this.note.id);
     }
   }
 }
