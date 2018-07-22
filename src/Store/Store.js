@@ -16,6 +16,11 @@ export const store = new Vuex.Store({
     counterId: 1,
     editModal: false
   },
+  getters: {
+    notes: state => {
+      return state.notes;
+    }
+  },
   mutations: {
     addNote: (state, note) => {
       state.notes.push({
@@ -25,10 +30,10 @@ export const store = new Vuex.Store({
         time: new Date(Date.now()).toLocaleString()
       })
     },
-    editNote: (state) => {
-      state.editModal = !state.editModal;
+    editNote: (state, note) => {
+     
     },
-    removeElement: (state, id) => {
+    removeNote: (state, id) => {
       let array = state.notes;
       array.forEach((note, index) => {
         if (note.id === id) {

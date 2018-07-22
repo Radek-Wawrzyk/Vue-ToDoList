@@ -3,7 +3,6 @@
     <div class="container">
       <Header></Header>
       <Form v-on:addElement="addNote"></Form>
-      {{this.$store.state.notes}}
       <ul class="list-group">
         <single-note v-for="note in notes" v-bind:note="note" v-bind:key="note.id"></single-note>
       </ul>
@@ -16,6 +15,7 @@
 import Header from './Header.vue';
 import Form from './Form.vue';
 import SingleNote from './SingleNote.vue';
+import { mapGetters } from "vuex";
 
 export default {
   name: 'Notes',
@@ -25,9 +25,7 @@ export default {
     SingleNote,
   },
   computed: {
-    notes() {
-      return this.$store.state.notes;
-    }
+    ...mapGetters(["notes"])
   },
   methods: {
     addNote: function(note) {
